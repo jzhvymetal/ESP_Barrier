@@ -265,6 +265,7 @@ def start_micropython():
         def recv_into(self, buffer, nbytes):
             return super().readinto(buffer, nbytes)
     
+    
     if ACTOR_TYPE=='CH9329':
         from KM_CH9329_ACTORS import Mouse, Keyboard
         from machine import UART
@@ -272,10 +273,9 @@ def start_micropython():
         mouse_act=Mouse(ser, DEVICE_W, DEVICE_H)
         keyboard_act=Keyboard(ser)
     elif ACTOR_TYPE=='HID':
-        from KM_MPHID_ACTORS import Keyboard
-        from KM_MPHID_ACTORS import MouseInterface
-        mouse_act=MouseInterface
-        keyboard_act=Keyboard()
+        from KM_MPHID_ACTORS import KeyboardInterface as keyboard_act
+        from KM_MPHID_ACTORS import MouseInterface as mouse_act
+        mouse_act.setScreenSize(DEVICE_W, DEVICE_H)
     else: #DEBUG OUTPUT ONLY
         from KM_DEBUG_ACTORS import Mouse, Keyboard             
         mouse_act=Mouse()
@@ -347,11 +347,12 @@ if __name__ == "__main__":
     print(sys.implementation.name)
 
 
+
     if sys.implementation.name == "cpython":
         start_cpython()
     elif sys.implementation.name == "circuitpython":
-        #ACTOR_TYPE='HID'
-        ACTOR_TYPE='CH9329'
+        ACTOR_TYPE='HID'
+        #ACTOR_TYPE='CH9329'
         DEVICE_NAME = "ExampleDevice2"
         start_circuitpython()
     elif sys.implementation.name == "micropython":

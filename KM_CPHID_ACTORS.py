@@ -147,7 +147,6 @@ class Mouse(object):
     
 KEYBOARD_DEVICE = usb_hid.Device(
     report_descriptor=bytes((
-        # Absolute mouse
         0x05, 0x01,        # Usage Page (Generic Desktop)
         0x05, 0x01,        #   Usage Page (Generic Desktop Ctrls)
         0x09, 0x06,        #   Usage (Keyboard)

@@ -22,7 +22,12 @@ class Mouse(object):
     def __init__(self, ser, sw, sh):
         self.ser=ser
         self.sw=sw
-        self.sh=sh    
+        self.sh=sh
+        
+    def setScreenSize(self, sw, sh):
+        self.sw=sw
+        self.sh=sh
+                    
     def send_mouse_data(self):
         data_out=b""
         HEAD = b"\x57\xab"  # Frame header
