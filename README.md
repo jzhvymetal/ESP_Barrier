@@ -1,6 +1,6 @@
 
 
-# **Python Barrier Client**
+# **Python Barrier/Input-Leap Client**
 
 This is a Python Barrier Client that can run on CPython, CircuitPython, and MicroPython. The Python script can either use native HID Mouse/Keyboard or a CH9329 via serial. Below, I will describe the different use cases. The CH9329 Actor only has a vertical wheel as it does not implement a horizontal wheel. The HID Actor implements both vertical and horizontal wheels.
 
